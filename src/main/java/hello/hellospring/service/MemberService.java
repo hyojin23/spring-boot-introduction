@@ -18,6 +18,7 @@ public class MemberService {
         memberRepository.save(member);
         return member.getId();
     }
+
     private void validateDuplicateMember(Member member) {
         // 같은 이름이 있는 중복 회원X
         memberRepository.findByName(member.getName())
@@ -32,6 +33,7 @@ public class MemberService {
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
+
     public Optional<Member> findOne(Long memberId) {
         return memberRepository.findById(memberId);
     }
