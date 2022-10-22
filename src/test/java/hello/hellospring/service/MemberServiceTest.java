@@ -1,10 +1,9 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberServiceTest {
 
@@ -20,7 +19,23 @@ class MemberServiceTest {
         Long saveId = memberService.join(member);
 
         // then
-//        Assertions.assertThat()
+        Member findMember = memberService.findOne(saveId).get();
+        assertThat(member.getName()).isEqualTo(findMember.getName());
+    }
+
+    @Test
+    public void 중복_회원_예외() {
+        // given
+        Member memeber1 = new Member();
+        memeber1.setName("spring");
+
+        Member memeber2 = new Member();
+        memeber1.setName("spring");
+
+        // when
+
+        // then
+
 
     }
 
